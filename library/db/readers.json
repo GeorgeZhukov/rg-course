@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "name": "Donald Trump",
+    "email": "trump@email.com",
+    "city": "New York",
+    "street": "Queen St",
+    "house": 256
+  },
+  {
+    "id": 2,
+    "name": "Barak Obama",
+    "email": "obama@email.com",
+    "city": "Hilo",
+    "street": "Kanoelehua Ave",
+    "house": 3551
+  }
+]
