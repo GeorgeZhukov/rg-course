@@ -1,4 +1,3 @@
-
 class Model
   def initialize(id)
 

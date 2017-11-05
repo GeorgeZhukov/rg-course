@@ -34,11 +34,7 @@ class Book < Model
       end
     end
 
-    max = orders.group_by { |d| d.book }.max_by do |item|
-      item.length
-    end
-
-    max[0]
+    "One of the most popular book ordered #{orders.length} people"
 
   end
 

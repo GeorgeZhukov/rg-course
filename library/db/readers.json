@@ -14,5 +14,21 @@
     "city": "Hilo",
     "street": "Kanoelehua Ave",
     "house": 3551
+  },
+  {
+    "id": 3,
+    "name": "John",
+    "email": "john@email.com",
+    "city": "New Jersey",
+    "street": "",
+    "house": 1
+  },
+  {
+    "id": 4,
+    "name": "Jack",
+    "email": "jack@email.com",
+    "city": "New York",
+    "street": "",
+    "house": 1
   }
 ]
