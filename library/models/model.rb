@@ -1,68 +1,53 @@
 class Model
-  def initialize(id)
-
+  def self.models
+    JSON.parse(File.read("./db/#{table_name}.json"))
   end
 
-  def self.all()
-    _books = JSON.parse(File.read("./db/#{self.table_name}.json"))
-    books = _books.map do |item|
+  def self.all
+    models = self.models.map do |item|
       self.new(item['id'])
     end
-    return books
-  end
-
-  def self.all_array()
-    JSON.parse(File.read("./db/#{self.table_name}.json"))
+    return models
   end
 
   def self.where (field_name, value)
-    _books = JSON.parse(File.read("./db/#{self.table_name}.json"))
-    _books = _books.select do |item|
+    _models = self.models.select do |item|
       item[field_name] == value
     end
 
-    books = _books.map do |item|
+    models = _models.map do |item|
       self.new(item['id'])
     end
 
-    return books
-  end
-
-  def self.where_array (field_name, value)
-    _books = JSON.parse(File.read("./db/#{self.table_name}.json"))
-    books = _books.select do |item|
-      item[field_name] == value
-    end
-
-    return books
+    return models
   end
 
   def self.get_by_id(id)
-    books = JSON.parse(File.read("./db/#{self.table_name}.json"))
-    books.each do |item|
+    models = JSON.parse(File.read("./db/#{self.table_name}.json"))
+    models.each do |item|
       if item['id'] == id
         return item
       end
     end
   end
 
-  def save ()
-    books = JSON.parse(File.read("./db/#{self.table_name}.json"))
-    books << {
-        id: Book.last['id']+=1,
+  def save
+    models = JSON.parse(File.read("./db/#{self.table_name}.json"))
+    models << {
+        id: model.last['id']+=1,
         title: @title,
         author: @author
     }
-    File.write("./db/#{self.table_name}.json", JSON.generate(books))
+    File.write("./db/#{self.table_name}.json", JSON.generate(models))
   end
 
-  def delete()
-    books = JSON.parse(File.read("./db/#{self.table_name}.json"))
-    books.delete_if { |h| h['id'] == @id }
-    File.write("./db/#{self.table_name}.json", JSON.generate(books))
+  def delete
+    models = JSON.parse(File.read("./db/#{self.table_name}.json"))
+    models.delete_if { |h| h['id'] == @id }
+    File.write("./db/#{self.table_name}.json", JSON.generate(models))
   end
 
-  def self.last()
+  def self.last
     JSON.parse(File.read("./db/#{self.table_name}.json")).last
   end
 

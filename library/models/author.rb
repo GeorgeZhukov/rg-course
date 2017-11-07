@@ -1,6 +1,5 @@
 class Author < Model
   attr_accessor :id, :name, :biography, :table_name
-  @@table_name = 'authors'
 
   def initialize (id = nil, fields = nil)
     model = fields ? fields : self.class.get_by_id(id)
@@ -10,6 +9,6 @@ class Author < Model
   end
 
   def self.table_name
-    @@table_name
+    'authors'
   end
 end

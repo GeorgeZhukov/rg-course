@@ -1,6 +1,5 @@
 class Order < Model
   attr_accessor :id, :book, :reader, :date, :table_name
-  @@table_name = 'orders'
 
   def initialize (id = nil, fields = nil)
     model = fields ? fields : self.class.get_by_id(id)
@@ -11,6 +10,6 @@ class Order < Model
   end
 
   def self.table_name
-    @@table_name
+    'orders'
   end
 end
